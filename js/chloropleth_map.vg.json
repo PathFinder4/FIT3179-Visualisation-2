@@ -5,7 +5,7 @@
   "height": 400,
   "projection": {"type": "equalEarth"},
   "data": {
-    "url": "https://raw.githubusercontent.com/PathFinder4/FIT3179-Visualisation-2/main/js/state.json?token=GHSAT0AAAAAABZFR6V5OS3MJYDDMXECRM6UYZQEEIQ",
+    "url": "https://raw.githubusercontent.com/PathFinder4/FIT3179-Visualisation-2/main/js/state.json",
     "format": {"type": "topojson", "feature": "cb_2018_us_state_20m"}
   },
   "transform": [
@@ -13,7 +13,7 @@
       "lookup": "properties.NAME",
       "from": {
         "data": {
-          "url": "https://raw.githubusercontent.com/PathFinder4/FIT3179-Visualisation-2/main/data/1975-2015-crime.csv?token=GHSAT0AAAAAABZFR6V44HD62NSMQY46GHWMYZQDOBQ"
+          "url": "https://github.com/PathFinder4/FIT3179-Visualisation-2/blob/main/data/1975-2015-crime.csvQ"
         },
         "key": "agency_state",
         "fields": ["assaults"]
@@ -24,7 +24,7 @@
   "mark": {"type": "geoshape"},
   "encoding": {
     "color": {
-      "field": "assaults Cases",
+      "field": "Assaults Cases",
       "type": "quantitative",
       "scale": {"type": "log"}
     },
