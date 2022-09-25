@@ -26,7 +26,7 @@
           "lookup": "properties.NAME",
           "from": {
             "data": {
-              "url": "https://raw.githubusercontent.com/JiazhouLiu/FIT3179/main/VegaLite/3_choropleth_map/data/covid_10_10_2020.csv"
+              "url": "https://raw.githubusercontent.com/PathFinder4/FIT3179-Visualisation-2/main/data/1975-2015-crime.csv?token=GHSAT0AAAAAABZFR6V44HD62NSMQY46GHWMYZQDOBQ"
             },
             "key": "agency_state",
             "fields": ["Active"]
@@ -45,7 +45,7 @@
           }
         },
         "tooltip": [
-          {"field": "properties.NAME", "type": "nominal", "title": "Country"},
+          {"field": "properties.NAME", "type": "nominal", "title": "agency_state"},
           {"field": "Active", "type": "quantitative"}
         ]
       }
