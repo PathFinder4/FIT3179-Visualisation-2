@@ -10,27 +10,29 @@
   },
   "transform": [
     {
-      "lookup": "properties.NAME",
+      "lookup": "properties.STUSPS",
       "from": {
         "data": {
-          "url": "https://github.com/PathFinder4/FIT3179-Visualisation-2/blob/main/data/week9-hw.csv"
+          "url": "https://raw.githubusercontent.com/PathFinder4/FIT3179-Visualisation-2/main/data/week9-hw.csv"
         },
         "key": "agency_state",
-        "fields": ["assaults"]
+        "fields": ["assaults_percapita"]
       }
     },
-    {"calculate": "datum.assaults + 0.1", "as": "Assault Cases"}
+    {"calculate": "datum.assaults_percapita", "as": "Assault Cases"}
   ],
   "mark": {"type": "geoshape"},
   "encoding": {
     "color": {
-      "field": "Assaults Cases",
+      "field": "Assault Cases",
       "type": "quantitative",
-      "scale": {"type": "log"}
+      "scale": {"type": "threshold",
+            "domain": [36, 400, 600],
+            "range": ["#fdbe85", "#fd8d3c", "#e6550d", "#a63603"]}
     },
     "tooltip": [
-      {"field": "properties.NAME", "type": "nominal", "title": "agency_state"},
-      {"field": "assaults", "type": "quantitative"}
+      {"field": "properties.STUSPS", "type": "nominal", "title": "agency_state"},
+      {"field": "assaults_percapita", "type": "quantitative"}
     ]
   }
 }
