@@ -5,32 +5,32 @@
   "height": 400,
   "projection": {"type": "equalEarth"},
   "data": {
-    "url": "https://raw.githubusercontent.com/JiazhouLiu/FIT3179/main/VegaLite/3_choropleth_map/js/chloropleth_map.json",
-    "format": {"type": "topojson", "feature": "ne_110m_admin_0_countries"}
+    "url": "https://raw.githubusercontent.com/PathFinder4/FIT3179-Visualisation-2/main/js/state.json?token=GHSAT0AAAAAABZFR6V5OS3MJYDDMXECRM6UYZQEEIQ",
+    "format": {"type": "topojson", "feature": "cb_2018_us_state_20m"}
   },
   "transform": [
     {
       "lookup": "properties.NAME",
       "from": {
         "data": {
-          "url": "https://raw.githubusercontent.com/JiazhouLiu/FIT3179/main/VegaLite/3_choropleth_map/data/covid_10_10_2020.csv"
+          "url": "https://raw.githubusercontent.com/PathFinder4/FIT3179-Visualisation-2/main/data/1975-2015-crime.csv?token=GHSAT0AAAAAABZFR6V44HD62NSMQY46GHWMYZQDOBQ"
         },
-        "key": "Country",
-        "fields": ["Active"]
+        "key": "agency_state",
+        "fields": ["assaults"]
       }
     },
-    {"calculate": "datum.Active + 0.1", "as": "Active Cases"}
+    {"calculate": "datum.assaults + 0.1", "as": "Assault Cases"}
   ],
   "mark": {"type": "geoshape"},
   "encoding": {
     "color": {
-      "field": "Active Cases",
+      "field": "assaults Cases",
       "type": "quantitative",
       "scale": {"type": "log"}
     },
     "tooltip": [
-      {"field": "properties.NAME", "type": "nominal", "title": "Country"},
-      {"field": "Active", "type": "quantitative"}
+      {"field": "properties.NAME", "type": "nominal", "title": "agency_state"},
+      {"field": "assaults", "type": "quantitative"}
     ]
   }
 }
