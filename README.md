@@ -1,5 +1,5 @@
 # FIT3179 Visualisation 2
- VegaLite Assignment - Heart attack analysis and prediction
+ VegaLite Assignment - USA Crime Rate analysis
 
 / --- Datasets - linked below ----/
 
