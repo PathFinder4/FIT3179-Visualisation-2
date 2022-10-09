@@ -9,62 +9,99 @@
   <div id="vis"/>
   <script>
     const spec = {
-  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Criminal Assaults by State in the US (2015-16)",
-  "width": 800,
-  "height": 450,
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "width": 500,
+  "height": 400,
+  "title": "Assaults per capita vs Rapes per capita",
   "data": {
-    "url": "https://raw.githubusercontent.com/PathFinder4/FIT3179-Visualisation-2/main/js/state.json",
-    "format": {"type": "topojson", "feature": "cb_2018_us_state_20m"}
+    "url": "https://raw.githubusercontent.com/PathFinder4/FIT3179-Visualisation-2/main/data/week9-hw.csv"
   },
-  "projection": {"type": "albers"},
-  "layer": [
+  "mark": "circle",
+  "transform": [
+    {"filter": "datum.population > Population"},
+    {"filter": "datum.crimes_percapita > Crimes"}
+  ],
+  "params": [
     {
-      "transform": [
-        {
-          "calculate": "'Data is not available in ' + datum.properties.NAME",
-          "as": "note"
-        }
-      ],
-      "mark": {"type": "geoshape", "fill": "lightyellow", "stroke": "black"},
-      "encoding": {"tooltip": {"field": "note"}}
+      "name": "Population",
+      "value": 0,
+      "bind": {
+        "input": "range",
+        "min": 0,
+        "max": 1000000,
+        "step": 100000,
+        "name": "Minimum Population: "
+      }
     },
     {
-      "transform": [
-        {
-          "lookup": "properties.STUSPS",
-          "from": {
-            "data": {
-              "url": "https://raw.githubusercontent.com/PathFinder4/FIT3179-Visualisation-2/main/data/week9-hw.csv"
-            },
-            "key": "agency_state",
-            "fields": ["assaults_percapita"]
-          }
-        },
-        {"calculate": "datum.assaults_percapita", "as": "Assault Cases"}
-      ],
-      "mark": {"type": "geoshape", "stroke": "black"},
-      "encoding": {
-        "color": {
-          "field": "Assault Cases",
-          "type": "quantitative",
-          "scale": {
-            "type": "threshold",
-            "domain": [200, 400, 600],
-            "range": ["#fdbe85", "#fd8d3c", "#e6550d", "#a63603"]
-          }
-        },
-        "tooltip": [
-          {"field": "properties.NAME", "type": "nominal", "title": "State"},
-          {
-            "field": "assaults_percapita",
-            "type": "quantitative",
-            "title": "Assaults per capita"
-          }
-        ]
+      "name": "Crimes",
+      "value": 0,
+      "bind": {
+        "input": "range",
+        "min": 0,
+        "max": 1500,
+        "step": 100,
+        "name": "Minimum Crime Rate: "
       }
     }
   ],
+  "encoding": {
+    "tooltip": [
+      {"field": "agency_jurisdiction", "type": "nominal", "title": "US State"},
+      {
+        "field": "population",
+        "type": "quantitative",
+        "title": "Population",
+        "format": ","
+      },
+      {
+        "field": "crimes_percapita",
+        "type": "quantitative",
+        "title": "Crimes per capita",
+        "format": ","
+      },
+      {
+        "field": "assaults_percapita",
+        "type": "quantitative",
+        "title": "Assaults per capita",
+        "format": ","
+      },
+      {
+        "field": "rapes_percapita",
+        "type": "quantitative",
+        "title": "Rapes per capita",
+        "format": ","
+      }
+    ],
+    "x": {
+      "field": "assaults_percapita",
+      "type": "quantitative",
+      "title": "Assaults per capita",
+      "axis": {"tickCount": 7},
+      "scale": {"domain": [10, 1200]}
+    },
+    "y": {
+      "field": "rapes_percapita",
+      "title": "Rapes per capita",
+      "type": "quantitative",
+      "scale": {"domain": [0, 160]}
+    },
+    "color": {
+      "field": "crimes_percapita",
+      "type": "quantitative",
+      "scale": {"domain": [0, 1800], "range": ["#000000", "#FF0000"]}
+    },
+    "size": {
+      "field": "population",
+      "type": "quantitative",
+      "scale": {
+        "type": "threshold",
+        "domain": [250000, 400000, 650000, 1000000, 2000000],
+        "range": [20, 40, 60, 80, 100, 200]
+      },
+      "legend": {"format": ".2s"}
+    }
+  },
   "config": {}
 };
     vegaEmbed("#vis", spec, {mode: "vega-lite"}).then(console.log).catch(console.warn);
