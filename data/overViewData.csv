@@ -1,4 +1,4 @@
-report_year,agency_code,agency_jurisdiction,agency_state,population,violent_crimes,homicides,rapes,assaults,robberies,months_reported,crimes_percapita,homicides_percapita,rapes_percapita,assaults_percapita,robberies_percapita
+reportyear,agency_code,agency_jurisdiction,agency_state,population,violent_crimes,homicides,rapes,assaults,robberies,months_reported,crimes_percapita,homicides_percapita,rapes_percapita,assaults_percapita,robberies_percapita
 1975,NM00101,Albuquerque,NM,286238,2383,30,181,1353,819,12,832.52,10.48,63.23,472.68,286.13
 1976,NM00101,Albuquerque,NM,292265,2420,28,186,1335,871,12,828.02,9.58,63.64,456.78,298.02
 1977,NM00101,Albuquerque,NM,292341,2390,31,207,1398,754,12,817.54,10.6,70.81,478.21,257.92
