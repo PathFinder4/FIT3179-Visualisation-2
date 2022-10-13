@@ -11,16 +11,23 @@ import numpy as np
 
 df = pd.read_csv('C:/Users/gche0026/OneDrive/Documents/GitHub/FIT3179-Visualisation-2/data/unprocessedData/1975-2015-crime.csv', index_col=0,error_bad_lines=False)
 city_array = ['Albuquerque','Atlanta','Boston','Charlotte','Chicago','Dallas','Denver','Detroit','Fairfax County','Honolulu','Indianapolis','Jacksonville','Kansas City','Las Vegas','Los Angeles','Louisville','Memphis','Milwaukee','Minneapolis','Montgomery County','New Orleans','New York City','Newark','Oklahoma City','Omaha','Philadelphia','Phoenix','Salt Lake City','Seattle','Washington','Wichita']
-
+city_array_highlight = ['Atlanta','Chicago','Honolulu','Indianapolis','Memphis','New Orleans','Salt Lake City']
 
 df_out = df.loc[df['agency_jurisdiction']=='Albuquerque']
+df_out2 = df.loc[df['agency_jurisdiction']=='Atlanta']
 
 for i in range(len(city_array)-1):
     df_next = df.loc[df['agency_jurisdiction']==city_array[i+1]]
     df_out = df_out.append(df_next)
+    
+for i in range(len(city_array_highlight)-1):
+    df_next = df.loc[df['agency_jurisdiction']==city_array_highlight[i+1]]
+    df_out2 = df_out2.append(df_next)
+
+
 
 df_out.to_csv("C:/Users/gche0026/OneDrive/Documents/GitHub/FIT3179-Visualisation-2/data/overViewData.csv")
-
+df_out2.to_csv("C:/Users/gche0026/OneDrive/Documents/GitHub/FIT3179-Visualisation-2/data/yearlyOverview.csv")
 # import csv
 
 # with open('C:/Users/gche0026/OneDrive/Documents/GitHub/FIT3179-Visualisation-2/data/1975-2015-crime.csv', newline='') as csvfile:
