@@ -1,0 +1,55 @@
+{ 
+    "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "width": 800,
+  "height": 500,
+  "title": "Yearly Crime Progression In Key US Cities",
+  "data": {
+  "url": "https://raw.githubusercontent.com/PathFinder4/FIT3179-Visualisation-2/main/data/yearlyOverview.csv"},
+   "encoding": {"x": {"field": "report_year", "type": "quantitative","title":"Year",
+     "scale":{"domain" : [1975,2015]}}},
+   "layer": [
+     {
+       "encoding": {
+         "color": {"field": "agency_jurisdiction", "type": "nominal","legend": {"title": "Police Jurisdiction"}},
+         "y": {"field": "crimes_percapita", "type": "quantitative","title":"Violent Crimes per capita"}
+       },
+       "layer": [
+         {    "mark": {
+     "type": "line",
+     "clip": true
+   }},
+         {"transform": [{"filter": {"selection": "hover"}}], "mark": "point"}
+       ]
+     },
+     {
+       "transform": [{"pivot": "agency_jurisdiction", "value": "crimes_percapita", "groupby": ["report_year"]}],
+       "mark": {"type":"rule","clip":true},
+       "encoding": {
+         "opacity": {
+           "condition": {"value": 0.3, "selection": "hover"},
+           "value": 0
+         },
+         "tooltip": [
+           {"field": "report_year", "type": "quantitative", "title":"Year"},
+           {"field": "Chicago", "type": "quantitative"},
+           {"field": "Honolulu", "type": "quantitative"},
+           {"field": "Atlanta", "type": "quantitative"},
+           {"field": "Indianapolis", "type": "quantitative"},
+           {"field": "Salt Lake City", "type": "quantitative"},
+           {"field": "New Orleans", "type": "quantitative"},
+           {"field": "Memphis", "type": "quantitative"}
+         ]
+       },
+       "selection": {
+         "hover": {
+           "type": "single",
+           "fields": ["report_year"],
+           "nearest": true,
+           "on": "mouseover",
+           "empty": "none",
+           "clear": "mouseout"
+         }
+       }
+     }
+   ]
+ }
