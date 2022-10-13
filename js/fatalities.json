@@ -1,0 +1,19 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": "Fatalities by State in the US (1975-2015)",
+  "width": 300, "height": 200,
+  "data": {"url": "https://raw.githubusercontent.com/PathFinder4/FIT3179-Visualisation-2/main/data/fatalitiesData.csv"},
+  "mark": "area",
+  "encoding": {
+    "x": {
+      "timeUnit": "yearmonth", "field": "Date (Year)",
+      "axis": {"format": "%Y"}
+    },
+    "y": {
+      "aggregate": "sum", "field": "count"
+    },
+    "color": {
+      "field": "Location of death (state)"
+    }
+  }
+}
