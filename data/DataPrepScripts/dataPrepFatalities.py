@@ -13,4 +13,13 @@ df = pd.read_csv('C:/Users/gche0026/OneDrive/Documents/GitHub/FIT3179-Visualisat
 
 df = df[['Date (Year)','Location of death (state)']]
 
-df.to_csv("C:/Users/gche0026/OneDrive/Documents/GitHub/FIT3179-Visualisation-2/data/fatalitiesData.csv",index=False)
+state_array = ['GA','IL','HI','IN','TN','LA','UT']
+
+
+df_out = df.loc[df['Location of death (state)']=='GA']
+
+for i in range(len(state_array)-1):
+    df_next = df.loc[df['Location of death (state)']==state_array[i+1]]
+    df_out = df_out.append(df_next)
+
+df_out.to_csv("C:/Users/gche0026/OneDrive/Documents/GitHub/FIT3179-Visualisation-2/data/fatalitiesData.csv",index=False)
