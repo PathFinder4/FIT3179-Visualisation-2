@@ -1,151 +1,117 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <script src="https://cdn.jsdelivr.net/npm/vega@5.22.1"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.2.0"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.20.8"></script>
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/vega@5.22.1"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.2.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.20.8"></script>
+
+    <!-- Formatting -->
+    <title>Crime analysis in the USA</title>
+
+    <!-- Stylesheet Import -->
+    <link rel="stylesheet" href="css/styles.css">
+
+
+    <style>
+
+        /* Set additional styling options for the columns*/
+        .column {
+            float: left;
+        }
+
+        .standard {
+            width: 50%
+        }
+
+        .bl {
+            width: 30%;
+        }
+
+        .br {
+            width: 70%
+        }
+
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+    </style>
 </head>
+
 <body>
-  <div id="vis"/>
-  <script>
-    const spec = {
-  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
-  "width": 500,
-  "height": 400,
-  "title": "Assaults per capita vs Rapes per capita — States in the USA (2015)",
-  "data": {
-    "url": "https://raw.githubusercontent.com/PathFinder4/FIT3179-Visualisation-2/main/data/week9-hw.csv"
-  },
-  "layer": [
-    {
-      "mark": {"type": "circle"},
-      "encoding": {
-        "tooltip": [
-          {
-            "field": "agency_jurisdiction",
-            "type": "nominal",
-            "title": "US State"
-          },
-          {
-            "field": "population",
-            "type": "quantitative",
-            "title": "Population",
-            "format": ","
-          },
-          {
-            "field": "crimes_percapita",
-            "type": "quantitative",
-            "title": "Crimes per capita",
-            "format": ","
-          },
-          {
-            "field": "assaults_percapita",
-            "type": "quantitative",
-            "title": "Assaults per capita",
-            "format": ","
-          },
-          {
-            "field": "rapes_percapita",
-            "type": "quantitative",
-            "title": "Rapes per capita",
-            "format": ","
-          }
-        ],
-        "x": {
-          "field": "assaults_percapita",
-          "type": "quantitative",
-          "title": "Assaults per capita",
-          "axis": {"tickCount": 7},
-          "scale": {"domain": [10, 1200]}
-        },
-        "y": {
-          "field": "rapes_percapita",
-          "title": "Rapes per capita",
-          "type": "quantitative",
-          "scale": {"domain": [0, 160]}
-        },
-        "color": {
-          "field": "crimes_percapita",
-          "type": "quantitative",
-          "scale": {"domain": [0, 1800], "range": ["#000000", "#FF0000"]},
-          "legend": {"title": "Crimes per capita"}
-        },
-        "size": {
-          "field": "population",
-          "type": "quantitative",
-          "scale": {
-            "type": "threshold",
-            "domain": [250000, 400000, 650000, 1000000, 2000000],
-            "range": [20, 40, 60, 80, 100, 200]
-          },
-          "legend": {"format": ".2s", "title": "Population", "dy": 10}
-        }
-      }
-    },
-    {
-      "mark": {"type": "text", "dy": -13},
-      "params": [{"name": "paintbrush", "select": "point"}],
-      "encoding": {
-        "text": {"field": "agency_jurisdiction", "type": "nominal"},
-        "opacity": {
-          "condition": {
-            "test": "datum['agency_jurisdiction']=='Salt Lake City' || datum['agency_jurisdiction']=='Atlanta' || datum['agency_jurisdiction']=='Memphis' |datum['agency_jurisdiction']=='Honolulu' || datum['agency_jurisdiction']=='New Orleans' || datum['agency_jurisdiction']=='Chicago' ||datum['agency_jurisdiction']=='Indianapolis'  ",
-            "value": 1
-          },
-          "value": 0
-        },
-        "x": {
-          "field": "assaults_percapita",
-          "type": "quantitative",
-          "title": "Assaults per capita",
-          "axis": {"tickCount": 7},
-          "scale": {"domain": [10, 1225]}
-        },
-        "y": {
-          "field": "rapes_percapita",
-          "title": "Rapes per capita",
-          "type": "quantitative",
-          "scale": {"domain": [0, 160]}
-        }
-      }
-    }
-  ],
-  "transform": [
-    {"filter": "datum.population > Population"},
-    {"filter": "datum.crimes_percapita > Crimes"}
-  ],
-  "params": [
-    {
-      "name": "Population",
-      "value": 0,
-      "bind": {
-        "input": "range",
-        "min": 0,
-        "max": 1000000,
-        "step": 100000,
-        "name": "Minimum Population: "
-      }
-    },
-    {
-      "name": "Crimes",
-      "value": 0,
-      "bind": {
-        "input": "range",
-        "min": 0,
-        "max": 1500,
-        "step": 100,
-        "name": "Minimum Crime Rate: "
-      }
-    }
-  ],
-  "config": {
-    "style": {
-      "cityStyle": {"fontSize": 11},
-      "annotationStyle": {"fontSize": 11}
-    }
-  }
-};
-    vegaEmbed("#vis", spec, {mode: "vega-lite"}).then(console.log).catch(console.warn);
-  </script>
+    <div class="row">
+        <h1>Crime Analysis in the USA</h1>
+        <hr>
+    </div>
+
+    <!-- Overview Seections -->
+    <div class="row">
+        <div class="column standard" style="background-color:#FFFFFF;">
+            <h2>Column 1</h2>
+            <p>Data..</p>
+            <div id="vis1"></div>
+            <hr>
+        </div>
+        <div class="column standard" style="background-color:#FFFFFF;">
+            <h2>Column 2</h2>
+            <p>Data..</p>
+            <div id="vis2"></div>
+            <hr>
+            <h2>Column 3</h2>
+            <p>Data..</p>
+            <div id="vis3"></div>
+            <hr>
+        </div>
+    </div>
+
+    <!-- Case Study section -->
+    <div class="row">
+        <div class="column bl" style="background-color:#FFFFFF;">
+            <h2>Column 1</h2>
+            <p>Data..</p>
+            <hr>
+        </div>
+        <div class="column br" style="background-color:#FFFFFF;">
+            <h2>Column 2</h2>
+            <p>Data..</p>
+            <hr>
+        </div>
+    </div>
+    <!-- References Section -->
+    <div class="row">
+        <h2>References</h2>
+        <p>enter references here</p>
+    </div>
 </body>
+
+<!-- Vegalite Embeds -->
+
+<script type="text/javascript">
+    var spec1 = "https://raw.githubusercontent.com/PathFinder4/FIT3179-Visualisation-2/main/js/overviewMap.json";
+    var spec2 = "https://raw.githubusercontent.com/PathFinder4/FIT3179-Visualisation-2/main/js/yearlyOverview.json";
+    var spec3 = "https://kelvinvalani.github.io/FIT3179/vis2/js/bubble.json";
+    var spec4 = "https://kelvinvalani.github.io/FIT3179/vis2/js/temp.json";
+  
+  
+    vegaEmbed('#vis1', spec1).then(function(result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+    
+     vegaEmbed('#vis2', spec2).then(function(result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+  
+    vegaEmbed('#vis3', spec3).then(function(result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+  
+    vegaEmbed('#vis4', spec4).then(function(result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+  
+  </script>
+
 </html>
