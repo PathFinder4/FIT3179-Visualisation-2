@@ -1,0 +1,224 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 500,
+    "height": 400,
+    "title": "Assaults per capita vs Robberies per capita — States in the USA (1975-2015)",
+    "data": {
+        "url": "https://raw.githubusercontent.com/PathFinder4/FIT3179-Visualisation-2/main/data/overViewData.csv"
+    },
+    "layer": [
+        {
+            "mark": {
+                "type": "circle"
+            },
+            "encoding": {
+                "tooltip": [
+                    {
+                        "field": "agency_jurisdiction",
+                        "type": "nominal",
+                        "title": "US State"
+                    },
+                    {
+                        "field": "population",
+                        "type": "quantitative",
+                        "title": "Population",
+                        "format": ","
+                    },
+                    {
+                        "field": "crimes_percapita",
+                        "type": "quantitative",
+                        "title": "Crimes per capita",
+                        "format": ","
+                    },
+                    {
+                        "field": "assaults_percapita",
+                        "type": "quantitative",
+                        "title": "Assaults per capita",
+                        "format": ","
+                    },
+                    {
+                        "field": "rapes_percapita",
+                        "type": "quantitative",
+                        "title": "Rapes per capita",
+                        "format": ","
+                    }
+                ],
+                "x": {
+                    "field": "assaults_percapita",
+                    "type": "quantitative",
+                    "title": "Assaults per capita",
+                    "axis": {
+                        "tickCount": 7
+                    },
+                    "scale": {
+                        "domain": [
+                            10,
+                            2500
+                        ]
+                    }
+                },
+                "y": {
+                    "field": "robberies_percapita",
+                    "title": "Robberies per capita",
+                    "type": "quantitative",
+                    "scale": {
+                        "domain": [
+                            0,
+                            2200
+                        ]
+                    }
+                },
+                "color": {
+                    "field": "crimes_percapita",
+                    "type": "quantitative",
+                    "scale": {
+                        "domain": [
+                            0,
+                            2500
+                        ],
+                        "range": [
+                            "#000000",
+                            "#FF0000"
+                        ]
+                    },
+                    "legend": {
+                        "title": "Crimes per capita"
+                    }
+                },
+                "size": {
+                    "field": "population",
+                    "type": "quantitative",
+                    "scale": {
+                        "type": "threshold",
+                        "domain": [
+                            250000,
+                            400000,
+                            650000,
+                            1000000,
+                            2000000
+                        ],
+                        "range": [
+                            20,
+                            40,
+                            60,
+                            80,
+                            100,
+                            200
+                        ]
+                    },
+                    "legend": {
+                        "format": ".2s",
+                        "title": "Population",
+                        "dy": 10
+                    }
+                }
+            }
+        },
+        {
+            "mark": {
+                "type": "text",
+                "dy": -13
+            },
+            "params": [
+                {
+                    "name": "paintbrush",
+                    "select": "point"
+                }
+            ],
+            "encoding": {
+                "text": {
+                    "field": "agency_jurisdiction",
+                    "type": "nominal"
+                },
+                "opacity": {
+                    "condition": {
+                        "test": "datum['agency_jurisdiction']=='Salt Lake City' || datum['agency_jurisdiction']=='Atlanta' || datum['agency_jurisdiction']=='Memphis' |datum['agency_jurisdiction']=='Honolulu' || datum['agency_jurisdiction']=='New Orleans' || datum['agency_jurisdiction']=='Chicago' ||datum['agency_jurisdiction']=='Indianapolis'  ",
+                        "value": 1
+                    },
+                    "value": 0
+                },
+                "x": {
+                    "field": "assaults_percapita",
+                    "type": "quantitative",
+                    "title": "Assaults per capita",
+                    "axis": {
+                        "tickCount": 7
+                    },
+                    "scale": {
+                        "domain": [
+                            10,
+                            1225
+                        ]
+                    }
+                },
+                "y": {
+                    "field": "robberies_percapita",
+                    "title": "Robberies per capita",
+                    "type": "quantitative",
+                    "scale": {
+                        "domain": [
+                            0,
+                            2200
+                        ]
+                    }
+                }
+            }
+        }
+    ],
+    "transform": [
+        {
+            "filter": "datum.report_year == yearfilter"
+        },
+        {
+            "filter": "datum.population > Population"
+        },
+        {
+            "filter": "datum.crimes_percapita > Crimes"
+        }
+    ],
+    "params": [
+        {
+            "name": "Population",
+            "value": 0,
+            "bind": {
+                "input": "range",
+                "min": 0,
+                "max": 1000000,
+                "step": 100000,
+                "name": "Minimum Population: "
+            }
+        },
+        {
+            "name": "Crimes",
+            "value": 0,
+            "bind": {
+                "input": "range",
+                "min": 0,
+                "max": 1500,
+                "step": 100,
+                "name": "Minimum Crime Rate: "
+            }
+        },
+        {
+            "name": "yearfilter",
+            "value": 1990,
+            "bind": {
+                "input": "range",
+                "min": 1975,
+                "max": 2015,
+                "step": 1,
+                "name": "Select the Year: "
+            }
+        }
+    ],
+    "config": {
+        "style": {
+            "cityStyle": {
+                "fontSize": 11
+            },
+            "annotationStyle": {
+                "fontSize": 11
+            }
+        }
+    }
+}
