@@ -22,7 +22,7 @@
   ],
     "mark": "bar",
     "encoding": {
-      "x": {"field": "crimes_percapita","type":"quantitative"},
+      "x": {"field": "rapes_percapita","type":"quantitative"},
       "y": {"field": "agency_jurisdiction","title":""},
       "color": {"field": "agency_jurisdiction",
       "scale": {
