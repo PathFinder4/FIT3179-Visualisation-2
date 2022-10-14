@@ -36,11 +36,11 @@
         }
 
         .bl {
-            width: 40%;
+            width: 45%;
         }
 
         .br {
-            width: 60%;
+            width: 55%;
         }
 
         .row:after {
@@ -65,7 +65,7 @@
             <div id="vis1"></div>
             <div class="slidecontainer">
                 <input type="range" min="1975" max="2015" value="1994" class="slider" id="overviewMapSlider">
-                <p>Value: <span id="sliderValue"></span></p>
+                <h3>Value: <span id="sliderValue"></span></h3>
             </div>
             <p>Data..</p>
             
@@ -78,7 +78,7 @@
             <div id="vis2"></div>
             <hr>
             <h2>Column 3</h2>
-            <p>Data..</p>
+            <p>Data..\n</p>
             <div id="vis3"></div>
             <hr>
         </div>
@@ -88,8 +88,11 @@
     <div class="row">
         <div class="column bl" style="background-color:#FFFFFF;">
             <h2>Column 1</h2>
-            <p>Data..</p>
+            
             <div id="overview_bubble"></div>
+            <p>Data..
+                <br>
+            </p>
             <button onclick="displayHomi()">Homicide</button>
             <button onclick="displayRape()">Rape</button>
             <button onclick="displayRobb()">Robbery</button>
@@ -97,8 +100,14 @@
         </div>
         <div class="column br" style="background-color:#FFFFFF;">
             <h2>Column 2</h2>
-            <p>Data..</p>
+            <p>Data..
+                <br>
+            </p>
+            
             <div id="juv"></div>
+            <p>Data..
+                <br>
+            </p>
             <button onclick="displayOverview()">Overview</button>
             <button onclick="displayAssault()">Assault</button>
             <button onclick="displayHomicide()">Homicide</button>
