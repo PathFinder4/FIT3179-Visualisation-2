@@ -15,22 +15,32 @@
 
 
     <style>
+        /* .row, .column {
+            border: 1% solid white;
+            border-collapse: collapse;
+        } */
 
         /* Set additional styling options for the columns*/
         .column {
             float: left;
         }
 
-        .standard {
-            width: 50%
+        .tl {
+            width: 60%;
+            height:800px;
+        }
+
+        .tr {
+            width: 40%;
+            height:800px;
         }
 
         .bl {
-            width: 30%;
+            width: 40%;
         }
 
         .br {
-            width: 70%
+            width: 60%;
         }
 
         .row:after {
@@ -49,15 +59,22 @@
 
     <!-- Overview Seections -->
     <div class="row">
-        <div class="column standard" style="background-color:#FFFFFF;">
+        <div class="column tl" style="background-color:#FFFFFF;">
             <h2>Column 1</h2>
             <p>Data..</p>
             <div id="vis1"></div>
+            <div class="slidecontainer">
+                <input type="range" min="1975" max="2015" value="1994" class="slider" id="overviewMapSlider">
+                <p>Value: <span id="sliderValue"></span></p>
+            </div>
+            <p>Data..</p>
+            
             <hr>
         </div>
-        <div class="column standard" style="background-color:#FFFFFF;">
+        <div class="column tr" style="background-color:#FFFFFF;">
             <h2>Column 2</h2>
             <p>Data..</p>
+            <!-- make containers for the visualtisations within the columns -->
             <div id="vis2"></div>
             <hr>
             <h2>Column 3</h2>
@@ -72,11 +89,21 @@
         <div class="column bl" style="background-color:#FFFFFF;">
             <h2>Column 1</h2>
             <p>Data..</p>
+            <div id="overview_bubble"></div>
+            <button onclick="displayHomi()">Homicide</button>
+            <button onclick="displayRape()">Rape</button>
+            <button onclick="displayRobb()">Robbery</button>
             <hr>
         </div>
         <div class="column br" style="background-color:#FFFFFF;">
             <h2>Column 2</h2>
             <p>Data..</p>
+            <div id="juv"></div>
+            <button onclick="displayOverview()">Overview</button>
+            <button onclick="displayAssault()">Assault</button>
+            <button onclick="displayHomicide()">Homicide</button>
+            <button onclick="displayRape()">Rape</button>
+            <button onclick="displayRobbery()">Robbery</button>
             <hr>
         </div>
     </div>
@@ -90,12 +117,83 @@
 <!-- Vegalite Embeds -->
 
 <script type="text/javascript">
-    var spec1 = "https://raw.githubusercontent.com/PathFinder4/FIT3179-Visualisation-2/main/js/overviewMap.json";
+
+    // JS scripting
+    var slider = document.getElementById("overviewMapSlider");
+    var output = document.getElementById("sliderValue");
+    output.innerHTML = slider.value; // Display the default slider value
+
+    // Update the current slider value (each time you drag the slider handle)
+    slider.oninput = function() {
+        output.innerHTML = this.value;
+        var spec1 = `https://raw.githubusercontent.com/PathFinder4/FIT3179-Visualisation-2/main/js/overViewMap/${slider.value}.json`;
+        vegaEmbed('#vis1', spec1).then(function(result) {
+        // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+        }).catch(console.error);
+    }
+
+    function displayOverview(){
+        vegaEmbed('#juv', juv1).then(function(result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+    }
+
+    function displayAssault(){
+        vegaEmbed('#juv', juv2).then(function(result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+    }
+
+    function displayHomicide(){
+        vegaEmbed('#juv', juv3).then(function(result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+    }
+
+    function displayRape(){
+        vegaEmbed('#juv', juv4).then(function(result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+    }
+
+    function displayRobbery(){
+        vegaEmbed('#juv', juv5).then(function(result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+    }
+
+    function displayHomi(){
+        vegaEmbed('#overview_bubble', overview1).then(function(result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+    }
+
+    function displayRape(){
+        vegaEmbed('#overview_bubble', overview2).then(function(result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+    }
+
+    function displayRobb(){
+        vegaEmbed('#overview_bubble', overview3).then(function(result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+    }
+
+    var spec1 = `https://raw.githubusercontent.com/PathFinder4/FIT3179-Visualisation-2/main/js/overViewMap/${slider.value}.json`;
     var spec2 = "https://raw.githubusercontent.com/PathFinder4/FIT3179-Visualisation-2/main/js/yearlyOverview.json";
-    var spec3 = "https://kelvinvalani.github.io/FIT3179/vis2/js/bubble.json";
-    var spec4 = "https://kelvinvalani.github.io/FIT3179/vis2/js/temp.json";
-  
-  
+    var spec3 = "https://raw.githubusercontent.com/PathFinder4/FIT3179-Visualisation-2/main/js/fatalities.json";
+
+    var overview1 = "https://raw.githubusercontent.com/PathFinder4/FIT3179-Visualisation-2/main/js/overview_bubble/ass_hom_bubble.json";
+    var overview2 = "https://raw.githubusercontent.com/PathFinder4/FIT3179-Visualisation-2/main/js/overview_bubble/ass_rape_bubble.json";
+    var overview3 = "https://raw.githubusercontent.com/PathFinder4/FIT3179-Visualisation-2/main/js/overview_bubble/ass_rob_bubble.json";
+
+    var juv1 = "https://raw.githubusercontent.com/PathFinder4/FIT3179-Visualisation-2/main/js/juv/juvOverall.json";
+    var juv2 = "https://raw.githubusercontent.com/PathFinder4/FIT3179-Visualisation-2/main/js/juv/juvAssault.json";
+    var juv3 = "https://raw.githubusercontent.com/PathFinder4/FIT3179-Visualisation-2/main/js/juv/juvHomicide.json";
+    var juv4 = "https://raw.githubusercontent.com/PathFinder4/FIT3179-Visualisation-2/main/js/juv/juvRape.json";
+    var juv5 = "https://raw.githubusercontent.com/PathFinder4/FIT3179-Visualisation-2/main/js/juv/juvRobbery.json";
+
     vegaEmbed('#vis1', spec1).then(function(result) {
       // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
     }).catch(console.error);
@@ -108,9 +206,16 @@
       // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
     }).catch(console.error);
   
-    vegaEmbed('#vis4', spec4).then(function(result) {
+    vegaEmbed('#juv', juv1).then(function(result) {
       // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
     }).catch(console.error);
+
+    vegaEmbed('#overview_bubble', overview3).then(function(result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+
+    
   
   </script>
 
