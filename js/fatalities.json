@@ -15,6 +15,11 @@
     },
     "color": {
       "field": "Location of death (state)"
-    }
+    },
+    "tooltip": [
+           {"timeUnit":"year","field": "Year", "type": "quantitative", "title":"Year"},
+           {"aggregate":"count","title": "Selected State", "type": "quantitative"}
+    ]
+    
   }
-}
+  }
