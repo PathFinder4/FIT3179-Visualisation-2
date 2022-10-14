@@ -22,66 +22,120 @@
             }
         }
     ],
-    "mark": "circle",
-    "encoding": {
-        "x": {
-            "field": "crimes_percapita",
-            "type": "quantitative",
-            "title": "Crimes Per Capita"
-        },
-        "y": {
-            "field": "rapes_percapita",
-            "type": "quantitative",
-            "title": "Rapes Per Capita"
-        },
-        "tooltip": [
-            {
-                "field": "agency_jurisdiction",
-                "type": "nominal",
-                "title": "Key Jurisdiction"
-            },
-            {
-                "field": "crimes_percapita",
-                "type": "quantitative",
-                "title": "Crimes per capita",
-                "format": ".3s"
-            },
-            {
-                "field": "rapes_percapita",
-                "type": "quantitative",
-                "title": "Rapes per capita",
-                "format": ".3s"
-            }
-        ],
-        "color": {
-            "field": "agency_jurisdiction",
-            "scale": {
-                "range": [
-                    "#e6550d",
-                    "#fd8d3c",
-                    "#fdae6b",
-                    "#fdd0a2",
-                    "#6b6ecf",
-                    "#fdd0a2",
-                    "#fdae6b",
-                    "#fd8d3c"
-                ]
-            },
-            "title": "Key Jurisdictions"
-        },
-        "size": {
-            "field": "crimes_percapita",
-            "type": "quantitative",
-            "scale": {
-                "type": "threshold",
-                "domain": [
-                    1
+    "layer": [
+        {
+            "mark": "circle",
+            "encoding": {
+                "x": {
+                    "field": "crimes_percapita",
+                    "type": "quantitative",
+                    "title": "Crimes Per Capita"
+                },
+                "y": {
+                    "field": "rapes_percapita",
+                    "type": "quantitative",
+                    "title": "Rapes Per Capita"
+                },
+                "tooltip": [
+                    {
+                        "field": "agency_jurisdiction",
+                        "type": "nominal",
+                        "title": "Key Jurisdiction"
+                    },
+                    {
+                        "field": "crimes_percapita",
+                        "type": "quantitative",
+                        "title": "Crimes per capita",
+                        "format": ".3s"
+                    },
+                    {
+                        "field": "rapes_percapita",
+                        "type": "quantitative",
+                        "title": "Rapes per capita",
+                        "format": ".3s"
+                    }
                 ],
-                "range": [
-                    100
-                ]
-            },
-            "legend": null
+                "color": {
+                    "field": "agency_jurisdiction",
+                    "scale": {
+                        "range": [
+                            "#e6550d",
+                            "#fd8d3c",
+                            "#fdae6b",
+                            "#fdd0a2",
+                            "#6b6ecf",
+                            "#fdd0a2",
+                            "#fdae6b",
+                            "#fd8d3c"
+                        ]
+                    },
+                    "title": "Key Jurisdictions"
+                }
+            }
+        },
+        {
+            "mark": "bar",
+            "encoding": {
+                "x": {
+                    "field": "crimes_percapita",
+                    "type": "quantitative",
+                    "title": "Crimes Per Capita"
+                },
+                "y": {
+                    "field": "rapes_percapita",
+                    "type": "quantitative",
+                    "title": "Rapes Per Capita"
+                },
+                "tooltip": [
+                    {
+                        "field": "agency_jurisdiction",
+                        "type": "nominal",
+                        "title": "Key Jurisdiction"
+                    },
+                    {
+                        "field": "crimes_percapita",
+                        "type": "quantitative",
+                        "title": "Crimes per capita",
+                        "format": ".3s"
+                    },
+                    {
+                        "field": "rapes_percapita",
+                        "type": "quantitative",
+                        "title": "Rapes per capita",
+                        "format": ".3s"
+                    }
+                ],
+                "color": {
+                    "field": "agency_jurisdiction",
+                    "scale": {
+                        "range": [
+                            "#e6550d",
+                            "#fd8d3c",
+                            "#fdae6b",
+                            "#fdd0a2",
+                            "#6b6ecf",
+                            "#fdd0a2",
+                            "#fdae6b",
+                            "#fd8d3c"
+                        ]
+                    },
+                    "title": "Key Jurisdictions"
+                },
+                "size": {
+                    "field": "crimes_percapita",
+                    "type": "quantitative",
+                    "scale": {
+                        "type": "threshold",
+                        "domain": [
+                            1
+                        ],
+                        "range": [
+                            1
+                        ]
+                    },
+                    "legend": null
+                }
+            }
         }
-    }
+    ]
 }
