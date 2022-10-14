@@ -26,10 +26,10 @@ for i in range(len(city_array_highlight)-1):
 
 years = range(1975,2016)
 for year in years:
-    df_year = df_out
+    df_year = df_out.loc[df_out['report_year']==year]
     df_year.to_csv("C:/Users/gche0026/OneDrive/Documents/GitHub/FIT3179-Visualisation-2/data/overviewYear/{}.csv".format(year))
     
-df
+
 
 df_out.to_csv("C:/Users/gche0026/OneDrive/Documents/GitHub/FIT3179-Visualisation-2/data/overViewData.csv")
 df_out2.to_csv("C:/Users/gche0026/OneDrive/Documents/GitHub/FIT3179-Visualisation-2/data/yearlyOverview.csv")
