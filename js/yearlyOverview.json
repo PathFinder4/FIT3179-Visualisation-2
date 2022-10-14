@@ -1,11 +1,11 @@
 { 
     "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
-  "width": 600,
-  "height": 200,
+  "width": 800,
+  "height": 500,
   "title": "Yearly Crime Progression In Key US Cities",
   "data": {
   "url": "https://raw.githubusercontent.com/PathFinder4/FIT3179-Visualisation-2/main/data/yearlyOverview.csv"},
-   "encoding": {"x": {"field": "report_year", "type": "quantitative","title":"Year",
+   "encoding": {"x": {"timeUnit": "year","field": "report_year", "type": "quantitative","title":"Year",
      "scale":{"domain" : [1975,2015]}}},
    "layer": [
      {
@@ -30,7 +30,7 @@
            "value": 0
          },
          "tooltip": [
-           {"field": "report_year", "type": "quantitative", "title":"Year"},
+           {"timeUnit":"year","field": "report_year", "type": "quantitative", "title":"Year"},
            {"field": "Chicago", "type": "quantitative"},
            {"field": "Honolulu", "type": "quantitative"},
            {"field": "Atlanta", "type": "quantitative"},
