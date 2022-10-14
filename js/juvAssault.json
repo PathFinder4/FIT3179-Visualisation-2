@@ -1,32 +1,68 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "data": {"url": "https://raw.githubusercontent.com/PathFinder4/FIT3179-Visualisation-2/main/data/juvDataSimplified.csv"},
-    "title":"Juvenile Crime Rate Compared To Key Jurisdictions",
+    "data": {
+        "url": "https://raw.githubusercontent.com/PathFinder4/FIT3179-Visualisation-2/main/data/juvDataSimplified.csv"
+    },
+    "title": "Juvenile Crime Rate Compared To Key Jurisdictions",
     "transform": [
-    {
-      "filter": "datum.report_year == yearfilter"
-    }
-  ],
-  "params": [
-    {
-                    "name": "yearfilter",
-                    "value": 2015,
-                    "bind": {
-                        "input": "range",
-                        "min": 1994,
-                        "max": 2015,
-                        "step": 1,
-                        "name": "Select the Year: "
-                    }
-                }
-  ],
-    "mark": "bar",
+        {
+            "filter": "datum.report_year == yearfilter"
+        }
+    ],
+    "params": [
+        {
+            "name": "yearfilter",
+            "value": 2015,
+            "bind": {
+                "input": "range",
+                "min": 1994,
+                "max": 2015,
+                "step": 1,
+                "name": "Select the Year: "
+            }
+        }
+    ],
+    "mark": "circle",
     "encoding": {
-      "x": {"field": "assaults_percapita","type":"quantitative"},
-      "y": {"field": "agency_jurisdiction","title":""},
-      "color": {"field": "agency_jurisdiction",
-      "scale": {
-        "range": ["#e6550d", "#fd8d3c", "#fdae6b", "#fdd0a2", "#6b6ecf","#fdd0a2", "#fdae6b","#fd8d3c"]},
-        "title":"Key Jurisdictions"}
+        "x": {
+            "field": "crimes_percapita",
+            "type": "quantitative",
+            "title": "Crimes Per Capita"
+        },
+        "y": {
+            "field": "assaults_percapita",
+            "type": "quantitative",
+            "title": "Assaults Per Capita"
+        },
+        "tooltip": [
+            {
+                "field": "crimes_percapita",
+                "type": "quantitative",
+                "title": "Crimes per capita",
+                "format": ".3s"
+            },
+            {
+                "field": "assaults_percapita",
+                "type": "quantitative",
+                "title": "Assaults per capita",
+                "format": ".3s"
+            }
+        ],
+        "color": {
+            "field": "agency_jurisdiction",
+            "scale": {
+                "range": [
+                    "#e6550d",
+                    "#fd8d3c",
+                    "#fdae6b",
+                    "#fdd0a2",
+                    "#6b6ecf",
+                    "#fdd0a2",
+                    "#fdae6b",
+                    "#fd8d3c"
+                ]
+            },
+            "title": "Key Jurisdictions"
+        }
     }
-  }
+}
