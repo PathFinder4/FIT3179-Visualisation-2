@@ -9,7 +9,7 @@ import pandas as pd
 import numpy as np
 
 
-df = pd.read_csv('C:/Users/gche0026/OneDrive/Documents/GitHub/FIT3179-Visualisation-2/data/unprocessedData/1975-2015-crime.csv', index_col=0,error_bad_lines=False)
+df = pd.read_csv('C:/Users/gche0026/OneDrive/Documents/GitHub/FIT3179-Visualisation-2/data/unprocessedData/1975-2015-crime.csv', index_col=False,error_bad_lines=False)
 city_array = ['Albuquerque','Atlanta','Boston','Charlotte','Chicago','Dallas','Denver','Detroit','Fairfax County','Honolulu','Indianapolis','Jacksonville','Kansas City','Las Vegas','Los Angeles','Louisville','Memphis','Milwaukee','Minneapolis','Montgomery County','New Orleans','New York City','Newark','Oklahoma City','Omaha','Philadelphia','Phoenix','Salt Lake City','Seattle','Washington','Wichita']
 city_array_highlight = ['Atlanta','Chicago','Honolulu','Indianapolis','Memphis','New Orleans','Salt Lake City']
 
@@ -24,7 +24,12 @@ for i in range(len(city_array_highlight)-1):
     df_next = df.loc[df['agency_jurisdiction']==city_array_highlight[i+1]]
     df_out2 = df_out2.append(df_next)
 
-
+years = range(1975,2016)
+for year in years:
+    df_year = df_out
+    df_year.to_csv("C:/Users/gche0026/OneDrive/Documents/GitHub/FIT3179-Visualisation-2/data/overviewYear/{}.csv".format(year))
+    
+df
 
 df_out.to_csv("C:/Users/gche0026/OneDrive/Documents/GitHub/FIT3179-Visualisation-2/data/overViewData.csv")
 df_out2.to_csv("C:/Users/gche0026/OneDrive/Documents/GitHub/FIT3179-Visualisation-2/data/yearlyOverview.csv")

@@ -20,6 +20,8 @@ for i in range(len(violent_crime_types)-1):
     df_next = df.loc[df['offense_name']==violent_crime_types[i+1]]
     df_out = df_out.append(df_next)
     
+df3 = df.groupby('Courses').sum()
+
 df_out.to_csv("C:/Users/gche0026/OneDrive/Documents/GitHub/FIT3179-Visualisation-2/data/juvDataSimplified.csv")
 
 #not used unfinished just did it on excel
