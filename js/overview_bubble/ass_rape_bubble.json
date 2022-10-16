@@ -2,7 +2,7 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": 500,
   "height": 400,
-  "title": "Assaults per capita vs Rapes per capita — States in the USA (1975-2015)",
+  "title": "Assaults per capita vs Rapes per capita — States in the US",
   "data": {
     "url": "https://raw.githubusercontent.com/PathFinder4/FIT3179-Visualisation-2/main/data/overViewData.csv"
   },
