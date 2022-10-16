@@ -14,21 +14,20 @@
         "type": "albers"
     },
     "params": [
-                {
-                    "name": "yearfilter",
-                    "value": 2015,
-                    "bind": {
-                        "input": "range",
-                        "min": 1975,
-                        "max": 2015,
-                        "step": 1,
-                        "name": "Select the Year: "
-                    }
-                }
-                ],
+        {
+            "name": "yearfilter",
+            "value": 2015,
+            "bind": {
+                "input": "range",
+                "min": 1975,
+                "max": 2015,
+                "step": 1,
+                "name": "Select the Year: "
+            }
+        }
+    ],
     "layer": [
-        {   
-            
+        {
             "transform": [
                 {
                     "calculate": "'Data is not available in ' + datum.properties.NAME",
@@ -46,10 +45,9 @@
                 }
             }
         },
-        {   
+        {
             "transform": [
                 {
-                    
                     "lookup": "properties.STUSPS",
                     "from": {
                         "data": {
@@ -64,17 +62,16 @@
                             "rapes_percapita",
                             "robberies_percapita"
                         ]
-                
                     }
                 },
-                
                 {
                     "calculate": "datum.crimes_percapita",
                     "as": "Violent Crime Cases"
+                },
+                {
+                    "filter": "datum.reportyear == yearfilter"
                 }
-                ,{"filter" : "datum.reportyear == yearfilter"}
             ],
-            
             "mark": {
                 "type": "geoshape",
                 "stroke": "black"
@@ -97,7 +94,9 @@
                             "#a63603"
                         ]
                     },
-                    "legend":{"title":"Crimes per capita"}
+                    "legend": {
+                        "title": "Crimes per capita"
+                    }
                 },
                 "tooltip": [
                     {
@@ -106,10 +105,9 @@
                         "title": "State"
                     },
                     {
-                        "field":"reportyear",
-                        "type":"quantitative",
-                        "title":"Year"
-
+                        "field": "reportyear",
+                        "type": "quantitative",
+                        "title": "Year"
                     },
                     {
                         "field": "crimes_percapita",

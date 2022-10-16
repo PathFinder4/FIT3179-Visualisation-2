@@ -8,7 +8,7 @@
     <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.20.8"></script>
 
     <!-- Formatting -->
-    <title>Crime analysis in the USA</title>
+    <title>US Crime Analysis — 1975 to 2015</title>
 
     <!-- Stylesheet Import -->
     <link rel="stylesheet" href="css/styles.css">
@@ -27,20 +27,22 @@
 
         .tl {
             width: 60%;
-            height:800px;
+            height: 650px;
         }
 
         .tr {
             width: 40%;
-            height:800px;
+            height:650px;
         }
 
         .bl {
-            width: 45%;
+            width: 43%;
+            height:630px;
         }
 
         .br {
-            width: 55%;
+            width: 57%;
+            height:630px;
         }
 
         .row:after {
@@ -48,78 +50,85 @@
             display: table;
             clear: both;
         }
+
+        .slider {
+            margin-left: 40%
+        }
     </style>
 </head>
 
 <body>
     <div class="row">
-        <h1>Crime Analysis in the USA</h1>
+        <hr>
+        <h1 style="text-align:center">US Crime Analysis — 1975 to 2015</h1>
         <hr>
     </div>
 
     <!-- Overview Seections -->
     <div class="row">
         <div class="column tl" style="background-color:#FFFFFF;">
-            <h2>Column 1</h2>
-            <p>Data..</p>
+            <h2 style="text-align:center">Map of Violent Crime Cases by State in the US</h2>
+            <br>
             <div id="vis1"></div>
+            <br>
             <div class="slidecontainer">
+                <h3 style="text-align:center">Chosen Year of Data: <span id="sliderValue"></span></h3>
                 <input type="range" min="1975" max="2015" value="1994" class="slider" id="overviewMapSlider">
-                <h3>Value: <span id="sliderValue"></span></h3>
+                
             </div>
-            <p>Data..</p>
-            
-            <hr>
         </div>
         <div class="column tr" style="background-color:#FFFFFF;">
-            <h2>Column 2</h2>
-            <p>Data..</p>
+            <h2 style="text-align:center">Trends over time</h2>
+            
             <!-- make containers for the visualtisations within the columns -->
             <div id="vis2"></div>
-            <hr>
-            <h2>Column 3</h2>
-            <p>Data..\n</p>
+            <br>
+            <br>
             <div id="vis3"></div>
-            <hr>
         </div>
     </div>
 
     <!-- Case Study section -->
     <div class="row">
-        <div class="column bl" style="background-color:#FFFFFF;">
-            <h2>Column 1</h2>
-            
+        <hr>
+        <h2 style="text-align:center">Detailed Statistics</h2>
+        <hr>
+        <div class="column bl" style="background-color:#FFFFFF;">   
+            <br> 
             <div id="overview_bubble"></div>
-            <p>Data..
-                <br>
-            </p>
+            <br>
+            <br>
             <button onclick="displayHomi()">Homicide</button>
             <button onclick="displayRape()">Rape</button>
             <button onclick="displayRobb()">Robbery</button>
-            <hr>
         </div>
         <div class="column br" style="background-color:#FFFFFF;">
-            <h2>Column 2</h2>
-            <p>Data..
-                <br>
-            </p>
-            
+            <br>
             <div id="juv"></div>
-            <p>Data..
-                <br>
-            </p>
+            <br>
+            <br>
             <button onclick="displayOverview()">Overview</button>
             <button onclick="displayAssault()">Assault</button>
             <button onclick="displayHomicide()">Homicide</button>
             <button onclick="displayRape()">Rape</button>
             <button onclick="displayRobbery()">Robbery</button>
-            <hr>
+            <br><br>
+            <i>*Overview provides an overview of juvenile statistics</i><br>
+            <i>*Allows selecting to display lollipop graphs of different crime types using buttons above</i>
         </div>
     </div>
     <!-- References Section -->
     <div class="row">
-        <h2>References</h2>
-        <p>enter references here</p>
+        <hr>
+        <h2 style="text-align:center">References</h2>
+        <ol type="1">
+            <li>Mapshaper.org (2022). Mapshaper is an editor for map data. Retrieved from: https://mapshaper.org/ </li>
+            <li>United States Census Bureau. (2018). Cartographic Boundary Files - Shapefile. Retrieved from: https://www.census.gov/geographies/mapping-files/time-series/geo/carto-boundary-file.html </li>
+            <li>Blue7red. (2021). arrests national juvenile dataset study. Retrieved from: https://www.kaggle.com/code/rhythmcam/arrests-national-juvenile-dataset-study/data </li>
+            <li>Kareem, H.F. (2021). fatalities from 2000 to 2016. Retrieved from: https://www.kaggle.com/datasets/hamdallak/police-fatalities-from-2000-to-2016 </li>
+            <li>Berkay, A. (2019). USArrest Crime - Kmeans Clustering - Elbow. Retrieved from: https://www.kaggle.com/code/berkayalan/usarrest-crime-kmeans-clustering-elbow/data </li>
+        </ol>
+        <hr>
     </div>
 </body>
 
