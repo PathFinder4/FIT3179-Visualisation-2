@@ -17,8 +17,9 @@
       "field": "Location of death (state)"
     },
     "tooltip": [
-           {"timeUnit":"year","field": "Year", "type": "quantitative", "title":"Year"},
-           {"aggregate":"count","title": "Selected State", "type": "quantitative"}
+      {"timeUnit":"year","field": "Year", "type": "quantitative", "title":"Year"},
+      {"field":"Location of death (state)","title":"State"},
+      {"aggregate":"count","title": "Fatalities", "type": "quantitative"}
     ]
     
   }
