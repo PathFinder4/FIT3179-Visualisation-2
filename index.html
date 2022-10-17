@@ -25,8 +25,18 @@
             float: left;
         }
 
+        .margin {
+          width: 5%;
+          height: 650px;
+        }
+
+        .marginBot {
+          width: 3%;
+          height: 650px;
+        }
+
         .tl {
-            width: 60%;
+            width: 55%;
             height: 650px;
         }
 
@@ -36,12 +46,12 @@
         }
 
         .bl {
-            width: 43%;
+            width: 57%;
             height:630px;
         }
 
         .br {
-            width: 57%;
+            width: 40%;
             height:630px;
         }
 
@@ -52,7 +62,10 @@
         }
 
         .slider {
-            margin-left: 40%
+            margin-left: 20%
+        }
+        .centreMargin{
+          margin-left:10%
         }
     </style>
 </head>
@@ -66,13 +79,16 @@
 
     <!-- Overview Seections -->
     <div class="row">
+        <div class="column margin" style="background-color:#FFFFFF;">
+          <br><br><br><br><br><br><br><br><br>
+      </div>
         <div class="column tl" style="background-color:#FFFFFF;">
-            <h2 style="text-align:center">Map of Violent Crime Cases by State in the US</h2>
+            <h2 class = "centreMargin">Map of Violent Crime Cases by State in the US</h2>
             <br>
-            <div id="vis1"></div>
+            <div  style="text-align:center" id="vis1"></div>
             <br>
             <div class="slidecontainer">
-                <h3 style="text-align:center">Chosen Year of Data: <span id="sliderValue"></span></h3>
+                <h3 class = "slider">Chosen Year of Data: <span id="sliderValue"></span></h3>
                 <input type="range" min="1975" max="2015" value="1994" class="slider" id="overviewMapSlider">
                 
             </div>
@@ -93,28 +109,32 @@
         <hr>
         <h2 style="text-align:center">Detailed Statistics</h2>
         <hr>
+        <div class="column marginBot" style="background-color:#FFFFFF;">
+          <br><br><br><br><br><br><br><br><br>
+      </div>
         <div class="column bl" style="background-color:#FFFFFF;">   
-            <br> 
-            <div id="overview_bubble"></div>
-            <br>
-            <br>
-            <button onclick="displayHomi()">Homicide</button>
-            <button onclick="displayRape()">Rape</button>
-            <button onclick="displayRobb()">Robbery</button>
+          <br>
+          <div id="juv"></div>
+          <br><br>
+          <i>*Overview provides an overview of juvenile statistics</i><br>
+          <i>*Allows selecting to display lollipop graphs of different crime types using buttons above</i>
+          <br>
+          <br>
+          <button onclick="displayOverview()">Overview</button>
+          <button onclick="displayAssault()">Assault</button>
+          <button onclick="displayHomicide()">Homicide</button>
+          <button onclick="displayRape()">Rape</button>
+          <button onclick="displayRobbery()">Robbery</button>
         </div>
         <div class="column br" style="background-color:#FFFFFF;">
-            <br>
-            <div id="juv"></div>
-            <br>
-            <br>
-            <button onclick="displayOverview()">Overview</button>
-            <button onclick="displayAssault()">Assault</button>
-            <button onclick="displayHomicide()">Homicide</button>
-            <button onclick="displayRape()">Rape</button>
-            <button onclick="displayRobbery()">Robbery</button>
-            <br><br>
-            <i>*Overview provides an overview of juvenile statistics</i><br>
-            <i>*Allows selecting to display lollipop graphs of different crime types using buttons above</i>
+          <br> 
+          <div id="overview_bubble"></div>
+          <br>
+          <br>
+          <button onclick="displayHomi()">Homicide</button>
+          <button onclick="displayRape()">Rape</button>
+          <button onclick="displayRobb()">Robbery</button>
+            
         </div>
     </div>
     <!-- References Section -->
